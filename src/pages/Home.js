@@ -165,8 +165,8 @@ function Home() {
     </Box>
   );
 
-  const renderLoadMoreButton = (category, setVisibleCount) => (
-    category.length > visibleTrending && (
+  const renderLoadMoreButton = (category, setVisibleCount, visibleCount) => (
+    category.length > visibleCount && (
       <Box textAlign="center" mt={2}>
         <Button
           variant="contained"
@@ -210,27 +210,27 @@ function Home() {
         <>
           <Typography variant="h4" gutterBottom>Search Results</Typography>
           {renderMovies(searchResults.slice(0, visibleSearchResults))}
-          {renderLoadMoreButton(searchResults, setVisibleSearchResults)}
+          {renderLoadMoreButton(searchResults, setVisibleSearchResults, visibleSearchResults)}
         </>
       ) : filteredMovies.length > 0 ? (
         <>
           <Typography variant="h4" gutterBottom>Filtered Movies</Typography>
           {renderMovies(filteredMovies.slice(0, visibleFilteredMovies))}
-          {renderLoadMoreButton(filteredMovies, setVisibleFilteredMovies)}
+          {renderLoadMoreButton(filteredMovies, setVisibleFilteredMovies, visibleFilteredMovies)}
         </>
       ) : (
         <>
           <Typography variant="h4" gutterBottom>Trending Movies</Typography>
           {renderMovies(trending.slice(0, visibleTrending))}
-          {renderLoadMoreButton(trending, setVisibleTrending)}
+          {renderLoadMoreButton(trending, setVisibleTrending, visibleTrending)}
 
-          <Typography variant="h4" gutterBottom>Top Rated</Typography>
+          <Typography variant="h4" gutterBottom>Top Rated Movies</Typography>
           {renderMovies(topRated.slice(0, visibleTopRated))}
-          {renderLoadMoreButton(topRated, setVisibleTopRated)}
+          {renderLoadMoreButton(topRated, setVisibleTopRated, visibleTopRated)}
 
           <Typography variant="h4" gutterBottom>Upcoming Movies</Typography>
           {renderMovies(upcoming.slice(0, visibleUpcoming))}
-          {renderLoadMoreButton(upcoming, setVisibleUpcoming)}
+          {renderLoadMoreButton(upcoming, setVisibleUpcoming, visibleUpcoming)}
         </>
       )}
     </Container>
