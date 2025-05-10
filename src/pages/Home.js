@@ -86,38 +86,58 @@ function Home() {
   };
 
   const renderMovies = (movies) => (
-    <Grid container spacing={3}>
+    <Grid container spacing={3} justifyContent="center">
       {movies.map((movie) => (
         <Grid item xs={12} sm={6} md={4} lg={3} key={movie.id}>
-          <Card sx={{ height: '100%', display: 'flex', flexDirection: 'column' }}>
-            <CardMedia
-              component="img"
-              height="300"
-              image={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
-              alt={movie.title}
-              onClick={() => navigate(`/movie/${movie.id}`)}
-              sx={{ cursor: 'pointer' }}
-            />
-            <CardContent>
-              <Typography variant="h6" component="div" gutterBottom>
-                {movie.title}
-              </Typography>
-              <Typography variant="body2" color="text.secondary">
-                Rating: {movie.vote_average}
-              </Typography>
-            </CardContent>
-            <CardActions>
-              <Button
-                variant="outlined"
-                color={favorites.some((fav) => fav.id === movie.id) ? 'secondary' : 'primary'}
-                onClick={() => toggleFavorite(movie)}
-              >
-                {favorites.some((fav) => fav.id === movie.id)
-                  ? '★ Remove Favorite'
-                  : '☆ Add to Favorites'}
-              </Button>
-            </CardActions>
-          </Card>
+          <Box
+            sx={{
+              display: 'flex',
+              justifyContent: 'center',
+              alignItems: 'center',
+              height: '100%',
+            }}
+          >
+            <Card
+              sx={{
+                display: 'flex',
+                flexDirection: 'column',
+                height: '100%',
+                width: 250, // Set a fixed width
+                maxWidth: 250, // Ensure it doesn't stretch beyond this width
+              }}
+            >
+              <CardMedia
+                component="img"
+                height="300"
+                image={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
+                alt={movie.title}
+                onClick={() => navigate(`/movie/${movie.id}`)}
+                sx={{
+                  cursor: 'pointer',
+                  objectFit: 'cover', // Ensure the image covers the space and doesn't stretch
+                }}
+              />
+              <CardContent sx={{ flexGrow: 1 }}>
+                <Typography variant="h6" component="div" gutterBottom>
+                  {movie.title}
+                </Typography>
+                <Typography variant="body2" color="text.secondary">
+                  Rating: {movie.vote_average}
+                </Typography>
+              </CardContent>
+              <CardActions>
+                <Button
+                  variant="outlined"
+                  color={favorites.some((fav) => fav.id === movie.id) ? 'secondary' : 'primary'}
+                  onClick={() => toggleFavorite(movie)}
+                >
+                  {favorites.some((fav) => fav.id === movie.id)
+                    ? '★ Remove Favorite'
+                    : '☆ Add to Favorites'}
+                </Button>
+              </CardActions>
+            </Card>
+          </Box>
         </Grid>
       ))}
     </Grid>
