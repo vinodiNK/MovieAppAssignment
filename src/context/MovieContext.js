@@ -6,7 +6,6 @@ export const MovieProvider = ({ children }) => {
   const [favorites, setFavorites] = useState([]);
   const [lastSearch, setLastSearch] = useState('');
 
-  // Load favorites and last search from localStorage
   useEffect(() => {
     const storedFavorites = localStorage.getItem('favorites');
     if (storedFavorites) {
@@ -18,7 +17,6 @@ export const MovieProvider = ({ children }) => {
     }
   }, []);
 
-  // Save favorites to localStorage
   useEffect(() => {
     localStorage.setItem('favorites', JSON.stringify(favorites));
   }, [favorites]);
