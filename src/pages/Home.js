@@ -139,7 +139,7 @@ function Home() {
           sx={{ ml: 2 }}
           onClick={() => navigate('/favorites')}
         >
-          My Favorites
+          My Favorites ({favorites.length})
         </Button>
       </Box>
 
