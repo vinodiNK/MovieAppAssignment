@@ -1,7 +1,7 @@
 import { signInWithEmailAndPassword } from 'firebase/auth';
 import { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import loginImage from '../assets/login-image.jpg'; // Import your image
+import loginImage from '../assets/login-image.jpg';
 import { auth } from '../firebase';
 import './Login.css';
 
@@ -22,6 +22,13 @@ function Login() {
 
   return (
     <div className="login-container">
+      <div className="login-image-container">
+        <img 
+          src={loginImage} 
+          alt="Movie theater" 
+          className="login-image"
+        />
+      </div>
       <div className="login-form-container">
         <form className="login-form" onSubmit={handleLogin}>
           <h2>Welcome To Movie-Explorer</h2>
@@ -44,13 +51,6 @@ function Login() {
             Don't have an account? <Link to="/signup">Sign Up</Link>
           </p>
         </form>
-      </div>
-      <div className="login-image-container">
-        <img 
-          src={loginImage} 
-          alt="Movie theater" 
-          className="login-image"
-        />
       </div>
     </div>
   );
